@@ -57,12 +57,12 @@ then
 
     # TODO: replace with `sed -i -e 's/abc/XYZ/g' /tmp/file.txt`
     # Create start script
-    sed -i -e "s/.screenname/${screenname}/g" $HOME/cpma/start.sh
-    sed -i -e "s/.port/${port}/g" $HOME/cpma/start.sh
-    chmod +x $HOME/cpma/start.sh
+    sed -i -e "s/.screenname/${screenname}/g" $HOME/start.sh
+    sed -i -e "s/.port/${port}/g" $HOME/start.sh
+    chmod +x $HOME/start.sh
 
     # setting up q3server.cfg
-    cd $HOME/cpma/serverfiles/baseq3/
+    cd $HOME/serverfiles/baseq3/
     sed -i -e "s/.servername/${servername}/g" q3server.cfg
     sed -i -e "s/.rconpw/${rconpw}/g" q3server.cfg
     sed -i -e "s/.serverpw/${serverpw}/g" q3server.cfg
