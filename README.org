@@ -8,6 +8,6 @@ curl -SsL https://raw.githubusercontent.com/freddiaN/cpmnetinstall/master/setup.
 
 This script will ask for some needed information first, then it will download a barebones server and edit the start and config files according to the previously given information.
 
-** 
+** TODOs
 **** TODO ask for the installation path in the beginning, so it isn't forced into $HOME
 **** TODO either have the MOTD be editable from the installscript or have a generic one that is good enough :>
