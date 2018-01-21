@@ -48,49 +48,46 @@ read -r -p "do you want to continue the installation? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
     # Making sure the server is located in $HOME @TODO: change this to a variable path
+    cd $HOME
+
     # Get the server files
     wget http://freddian.tf/cpma-barebones-server.zip
     unzip cpma-barebones-server.zip
 
+
     # Create start script
     touch $HOME/start.sh
-    cat > $HOME/start.sh << EOF
-    #!/bin/bash
-    screen -dmS ${screenname} serverfiles/q3ded +set net_port ${port} +set sv_punkbuster 0 +set fs_basepath $HOME/serverfiles +set dedicated 2 +set com_hunkMegs 512 +exec q3server.cfg +map cpm22 +set fs_game cpma
-    EOF
+    echo "#!/bin/bash" >> $HOME/start.sh
+    echo "screen -dmS ${screenname} serverfiles/q3ded +set net_port ${port} +set sv_punkbuster 0 +set fs_basepath $HOME/serverfiles +set dedicated 2 +set com_hunkMegs 512 +exec q3server.cfg +map cpm22 +set fs_game cpma" >> $HOME/start.sh
     chmod +x start.sh
 
     # setting up q3server.cfg
     touch $HOME/serverfiles/baseq3/q3server.cfg
-    cat > $HOME/serverfiles/baseq3/q3server.cfg << EOF
-    set sv_hostname "${servername}"
-    set sv_maxclients 16
-    set g_forcerespawn 15
-    set rconpassword "${rconpw}"
-    set g_gametype 0
-    set g_password "${serverpw}"
-    set fraglimit 0
-    set timelimit 10
-
-    set mode_start "1v1"
-    set server_gameplay "CPM"
-    set server_optimiseBW 1
-    set ref_password "${refpw}"
-    set team_allcaptian 0
-    set match_readypercent 100
-    set g_allowVote 1
-    set vote_percent 51
-    seta map_restrict 0
-    seta sv_fps 40
-    set sv_fps 40
-    set sv_allowDownload 1
-    set vote_allow_gameplay "CPM"
-    set map_delay 30
-    set map_rotate 0
-    set server_record 0
-    set server_motdfile motd.txt
-
-    EOF
+    echo "sv_hostname ${servername}" > $HOME/serverfiles/baseq3/q3server.cfg
+    echo "set sv_maxclients 16" >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo "set g_forcerespawn 15" >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo 'set rconpassword "${rconpw}"' >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo "set g_gametype 0" >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo 'set g_password "${serverpw}"' >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo "set fraglimit 0" >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo "set timelimit 10" >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo 'set mode_start "1v1"' >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo 'set server_gameplay "CPM"' >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo "set server_optimiseBW 1" >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo 'set ref_password "${refpw}"' >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo 'set team_allcaptian 0' >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo "set match_readypercent 100" >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo "set g_allowVote 1" >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo "set vote_percent 51" >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo "seta map_restrict 0" >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo "seta sv_fps 40" >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo "set sv_fps 40" >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo "set sv_allowDownload 1" >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo 'set vote_allow_gameplay "CPM"' >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo 'set map_delay 30' >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo 'set map_rotate 0' >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo 'set server_record 0' >> $HOME/serverfiles/baseq3/q3server.cfg
+    echo 'set server_motdfile motd.txt' >> $HOME/serverfiles/baseq3/q3server.cfg
 
     # end script
 
