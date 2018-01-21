@@ -54,7 +54,7 @@ then
 
     # Create start script
     touch $HOME/start.sh
-    cat > $HOME/start.sh << "EOF"
+    cat > $HOME/start.sh << EOF
     #!/bin/bash
     screen -dmS ${screenname} serverfiles/q3ded +set net_port ${port} +set sv_punkbuster 0 +set fs_basepath $HOME/serverfiles +set dedicated 2 +set com_hunkMegs 512 +exec q3server.cfg +map cpm22 +set fs_game cpma
     EOF
@@ -62,7 +62,7 @@ then
 
     # setting up q3server.cfg
     touch $HOME/serverfiles/baseq3/q3server.cfg
-    cat > $HOME/serverfiles/baseq3/q3server.cfg << "EOF"
+    cat > $HOME/serverfiles/baseq3/q3server.cfg << EOF
     set sv_hostname "${servername}"
     set sv_maxclients 16
     set g_forcerespawn 15
