@@ -47,47 +47,26 @@ read -r -p "do you want to continue the installation? [y/N] " response
 
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
-    # Making sure the server is located in $HOME @TODO: change this to a variable path
+    # Making sure the server is located in $HOME TODO: change this to a variable path
     cd $HOME
 
     # Get the server files
-    wget http://freddian.tf/cpma-barebones-server.zip
-    unzip cpma-barebones-server.zip
+    wget http://freddian.tf/cpma-barebones-server.zip -O cpma.zip
+    unzip cpma.zip
 
 
+    # TODO: replace with `sed -i -e 's/abc/XYZ/g' /tmp/file.txt`
     # Create start script
-    touch $HOME/start.sh
-    echo "#!/bin/bash" >> $HOME/start.sh
-    echo "screen -dmS ${screenname} serverfiles/q3ded +set net_port ${port} +set sv_punkbuster 0 +set fs_basepath $HOME/serverfiles +set dedicated 2 +set com_hunkMegs 512 +exec q3server.cfg +map cpm22 +set fs_game cpma" >> $HOME/start.sh
-    chmod +x start.sh
+    sed -i -e "s/.screenname/${screenname}/g" $HOME/cpma/start.sh
+    sed -i -e "s/.port/${port}/g" $HOME/cpma/start.sh
+    chmod +x $HOME/cpma/start.sh
 
     # setting up q3server.cfg
-    touch $HOME/serverfiles/baseq3/q3server.cfg
-    echo "sv_hostname ${servername}" > $HOME/serverfiles/baseq3/q3server.cfg
-    echo "set sv_maxclients 16" >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo "set g_forcerespawn 15" >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo 'set rconpassword "${rconpw}"' >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo "set g_gametype 0" >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo 'set g_password "${serverpw}"' >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo "set fraglimit 0" >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo "set timelimit 10" >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo 'set mode_start "1v1"' >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo 'set server_gameplay "CPM"' >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo "set server_optimiseBW 1" >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo 'set ref_password "${refpw}"' >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo 'set team_allcaptian 0' >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo "set match_readypercent 100" >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo "set g_allowVote 1" >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo "set vote_percent 51" >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo "seta map_restrict 0" >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo "seta sv_fps 40" >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo "set sv_fps 40" >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo "set sv_allowDownload 1" >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo 'set vote_allow_gameplay "CPM"' >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo 'set map_delay 30' >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo 'set map_rotate 0' >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo 'set server_record 0' >> $HOME/serverfiles/baseq3/q3server.cfg
-    echo 'set server_motdfile motd.txt' >> $HOME/serverfiles/baseq3/q3server.cfg
+    cd $HOME/cpma/serverfiles/baseq3/
+    sed -i -e "s/.servername/${servername}/g" q3server.cfg
+    sed -i -e "s/.rconpw/${rconpw}/g" q3server.cfg
+    sed -i -e "s/.serverpw/${serverpw}/g" q3server.cfg
+    sed -i -e "s/.refpw/${refpw}/g" q3server.cfg
 
     # end script
 

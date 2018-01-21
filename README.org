@@ -1,8 +1,9 @@
 * freddiaN's CPMA 1.50 Server netinstall script
   
-To use the script, run
+To use this script, run
+
 #+BEGIN_SRC bash
 curl -SsL https://raw.githubusercontent.com/freddiaN/cpmnetinstall/master/setup.sh | bash
 #+END_SRC
 
-This script will ask for some needed information first, then it will download a barebones server and create config/start files according to the previously given information.
+This script will ask for some needed information first, then it will download a barebones server and edit the start and config files according to the previously given information.
