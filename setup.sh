@@ -89,6 +89,7 @@ then
     set map_rotate 0
     set server_record 0
     set server_motdfile motd.txt
+
     EOF
 
     # end script
