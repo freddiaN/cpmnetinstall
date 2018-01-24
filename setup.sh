@@ -54,6 +54,16 @@ then
     wget http://freddian.tf/cpma-barebones-server.zip -O cpma.zip
     unzip cpma.zip
 
+    # Get the .pk3s from somewhere else because I don't wanna get fucked for hosting them myself
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak0.pk3 -O $HOME/serverfiles/baseq3/pak0.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak1.pk3 -O $HOME/serverfiles/baseq3/pak1.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak2.pk3 -O $HOME/serverfiles/baseq3/pak2.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak3.PK3 -O $HOME/serverfiles/baseq3/pak3.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak4.pk3 -O $HOME/serverfiles/baseq3/pak4.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak5.pk3 -O $HOME/serverfiles/baseq3/pak5.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak6.pk3 -O $HOME/serverfiles/baseq3/pak6.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak7.PK3 -O $HOME/serverfiles/baseq3/pak7.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak8.pk3 -O $HOME/serverfiles/baseq3/pak8.pk3
 
     # TODO: replace with `sed -i -e 's/abc/XYZ/g' /tmp/file.txt`
     # Create start script
