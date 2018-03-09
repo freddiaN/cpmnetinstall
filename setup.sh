@@ -92,7 +92,7 @@ then
     sed -i -e "s/.rconpw/${rconpw}/g" q3server.cfg
     sed -i -e "s/.serverpw/${serverpw}/g" q3server.cfg
     sed -i -e "s/.refpw/${refpw}/g" q3server.cfg
-    sed -i -e "s/.cotry/${cntry}/g" q3server.cfg
+    sed -i -e "s/.cntry/${cntry}/g" q3server.cfg
     sed -i -e "s/.stt/${stt}/g" q3server.cfg
     sed -i -e "s/.cty/${cty}/g" q3server.cfg
     sed -i -e "s/.un/${username}/g" q3server.cfg
