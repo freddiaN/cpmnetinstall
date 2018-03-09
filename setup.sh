@@ -26,6 +26,21 @@ port=${port:-27960}
 read -p "Please enter a name for the screen session (needed when running multiple servers on the same machine, default: q3): " screenname
 screenname=${screenname:-q3}
 
+read -sp "If known, please enter the Country the server is hosted in. (use the 2 character shortcode, use discord's flagemotes for reference)" country
+echo ""
+
+read -sp "If known, please enter the state the server is hosted in (mainly ment for the USA)." state
+echo ""
+
+read -sp "If known, please enter the City the server is hosted in." city
+echo ""
+
+read -p "Please enter your Discord username (just username, not the id number)" username
+username=${username:-^Pfreddia^NN}
+
+read -p "Please enter your Discord ID (number after the Hash-sign)" dc_id
+dc_id=${dc_id:-1337}
+
 read -sp "Please enter the referee password which is used to get admin rights for votes: " refpw
 echo ""
 
@@ -40,6 +55,10 @@ echo ""
 echo "Servername: ${servername}"
 echo "Port: ${port}"
 echo "Screenname: ${screenname}"
+echo "Country: ${country}"
+echo "State: ${state}"
+echo "City: ${city}"
+echo "Discord user: ${username} hash ${dc_id}"
 echo "Referee password: ${refpw}"
 echo "RCon password: ${rconpw}"
 echo "Server password (if you didn't set one, this will be blank): ${serverpw}"
@@ -65,7 +84,6 @@ then
     wget http://game.pioneernet.ru/dl/q3/files/pk3/pak7.PK3 -O $HOME/serverfiles/baseq3/pak7.pk3
     wget http://game.pioneernet.ru/dl/q3/files/pk3/pak8.pk3 -O $HOME/serverfiles/baseq3/pak8.pk3
 
-    # TODO: replace with `sed -i -e 's/abc/XYZ/g' /tmp/file.txt`
     # Create start script
     sed -i -e "s/.screenname/${screenname}/g" $HOME/start.sh
     sed -i -e "s/.port/${port}/g" $HOME/start.sh
@@ -77,6 +95,21 @@ then
     sed -i -e "s/.rconpw/${rconpw}/g" q3server.cfg
     sed -i -e "s/.serverpw/${serverpw}/g" q3server.cfg
     sed -i -e "s/.refpw/${refpw}/g" q3server.cfg
+    sed -i -e "s/.country/${country}/g" q3server.cfg
+    sed -i -e "s/.state/${state}/g" q3server.cfg
+    sed -i -e "s/.city/${city}/g" q3server.cfg
+    sed -i -e "s/.un/${username}/g" q3server.cfg
+    sed -i -e "s/.id/${dc_id}/g" q3server.cfg
+
+    # setting up motd.txt
+    if  "$state" ! "" 
+    then
+        sed -i -e "s/.country/${state}/g" motd.txt
+        sed -i -e "s/.city/${city}/g" motd.txt
+    else
+        sed -i -e "s/.country/${country}/g" motd.txt
+        sed -i -e "s/.city/${city}/g" motd.txt
+    fi
 
     # end script
 
