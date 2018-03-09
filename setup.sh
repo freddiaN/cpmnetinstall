@@ -26,19 +26,19 @@ port=${port:-27960}
 read -p "Please enter a name for the screen session (needed when running multiple servers on the same machine, default: q3): " screenname
 screenname=${screenname:-q3}
 
-read -sp "If known, please enter the Country the server is hosted in. (use the 2 character shortcode, use discord's flagemotes for reference)" country
+read -p "If known, please enter the Country the server is hosted in. (use the 2 character shortcode, use discord's flagemotes for reference): " country
 echo ""
 
-read -sp "If known, please enter the state the server is hosted in (mainly ment for the USA)." state
+read -p "If known, please enter the state the server is hosted in (mainly ment for the USA): " state
 echo ""
 
-read -sp "If known, please enter the City the server is hosted in." city
+read -p "If known, please enter the City the server is hosted in: " city
 echo ""
 
-read -p "Please enter your Discord username (just username, not the id number)" username
+read -p "Please enter your Discord username (just username, not the id number): " username
 username=${username:-^Pfreddia^NN}
 
-read -p "Please enter your Discord ID (number after the Hash-sign)" dc_id
+read -p "Please enter your Discord ID (number after the Hash-sign): " dc_id
 dc_id=${dc_id:-1337}
 
 read -sp "Please enter the referee password which is used to get admin rights for votes: " refpw
