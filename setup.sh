@@ -97,12 +97,12 @@ then
     sed -i -e "s/.id/${dc_id}/g" q3server.cfg
 
     # setting up motd.txt
-    if "$state" ! ""
+    if [[ "$state" =~ "" ]]
     then
-        sed -i -e "s/.country/${stt}/g" motd.txt
+        sed -i -e "s/.country/${cntry}/g" motd.txt
         sed -i -e "s/.city/${cty}/g" motd.txt
     else
-        sed -i -e "s/.country/${cntry}/g" motd.txt
+        sed -i -e "s/.country/${stt}/g" motd.txt
         sed -i -e "s/.city/${cty}/g" motd.txt
     fi
     
