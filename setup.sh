@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ### freddiaN's CPMA 1.50 Server Netinstaller script
-## This is an automated script used for
+## This is an automated script used for setting up servers quickly and (hopefully) without any pain points
 
 echo "You are using freddiaN's CPMA 1.50 Server netinstaller."
 echo "This script will ask you a few questions and download everything needed to get a server up and running."
@@ -26,14 +26,11 @@ port=${port:-27960}
 read -p "Please enter a name for the screen session (needed when running multiple servers on the same machine, default: q3): " screenname
 screenname=${screenname:-q3}
 
-read -p "If known, please enter the Country the server is hosted in. (use the 2 character shortcode, use discord's flagemotes for reference): " country
-echo ""
+read -p "If known, please enter the Country the server is hosted in. (use the 2 character shortcode, use discord's flagemotes for reference): " cntry
 
-read -p "If known, please enter the state the server is hosted in (mainly ment for the USA): " state
-echo ""
+read -p "If known, please enter the state the server is hosted in (mainly ment for the USA): " stt
 
-read -p "If known, please enter the City the server is hosted in: " city
-echo ""
+read -p "If known, please enter the City the server is hosted in: " cty
 
 read -p "Please enter your Discord username (just username, not the id number): " username
 username=${username:-^Pfreddia^NN}
@@ -42,10 +39,8 @@ read -p "Please enter your Discord ID (number after the Hash-sign): " dc_id
 dc_id=${dc_id:-1337}
 
 read -sp "Please enter the referee password which is used to get admin rights for votes: " refpw
-echo ""
 
 read -sp "Please enter the RCon password used to execute commands on a server level: " rconpw
-echo ""
 
 read -sp "[OPTIONAL] Enter a serverpassword to stop complete randoms to connect to it (nice for PUG focused servers): " serverpw
 echo ""
@@ -55,9 +50,9 @@ echo ""
 echo "Servername: ${servername}"
 echo "Port: ${port}"
 echo "Screenname: ${screenname}"
-echo "Country: ${country}"
-echo "State: ${state}"
-echo "City: ${city}"
+echo "Country: ${cntry}"
+echo "State: ${stt}"
+echo "City: ${cty}"
 echo "Discord user: ${username} hash ${dc_id}"
 echo "Referee password: ${refpw}"
 echo "RCon password: ${rconpw}"
@@ -95,21 +90,24 @@ then
     sed -i -e "s/.rconpw/${rconpw}/g" q3server.cfg
     sed -i -e "s/.serverpw/${serverpw}/g" q3server.cfg
     sed -i -e "s/.refpw/${refpw}/g" q3server.cfg
-    sed -i -e "s/.country/${country}/g" q3server.cfg
-    sed -i -e "s/.state/${state}/g" q3server.cfg
-    sed -i -e "s/.city/${city}/g" q3server.cfg
+    sed -i -e "s/.country/${cntry}/g" q3server.cfg
+    sed -i -e "s/.state/${stt}/g" q3server.cfg
+    sed -i -e "s/.city/${cty}/g" q3server.cfg
     sed -i -e "s/.un/${username}/g" q3server.cfg
     sed -i -e "s/.id/${dc_id}/g" q3server.cfg
 
     # setting up motd.txt
-    if  "$state" ! "" 
+    if "$state" ! ""
     then
-        sed -i -e "s/.country/${state}/g" motd.txt
-        sed -i -e "s/.city/${city}/g" motd.txt
+        sed -i -e "s/.country/${stt}/g" motd.txt
+        sed -i -e "s/.city/${cty}/g" motd.txt
     else
-        sed -i -e "s/.country/${country}/g" motd.txt
-        sed -i -e "s/.city/${city}/g" motd.txt
+        sed -i -e "s/.country/${cntry}/g" motd.txt
+        sed -i -e "s/.city/${cty}/g" motd.txt
     fi
+    
+    sed -i -e "s/.un/${username}/g" motd.txt
+    sed -i -e "s/.id/${dc_id}/g" motd.txt
 
     # end script
 
