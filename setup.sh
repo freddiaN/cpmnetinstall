@@ -39,8 +39,10 @@ read -p "Please enter your Discord ID (number after the Hash-sign): " dc_id
 dc_id=${dc_id:-1337}
 
 read -sp "Please enter the referee password which is used to get admin rights for votes: " refpw
+echo ""
 
 read -sp "Please enter the RCon password used to execute commands on a server level: " rconpw
+echo ""
 
 read -sp "[OPTIONAL] Enter a serverpassword to stop complete randoms to connect to it (nice for PUG focused servers): " serverpw
 echo ""
@@ -90,20 +92,20 @@ then
     sed -i -e "s/.rconpw/${rconpw}/g" q3server.cfg
     sed -i -e "s/.serverpw/${serverpw}/g" q3server.cfg
     sed -i -e "s/.refpw/${refpw}/g" q3server.cfg
-    sed -i -e "s/.country/${cntry}/g" q3server.cfg
-    sed -i -e "s/.state/${stt}/g" q3server.cfg
-    sed -i -e "s/.city/${cty}/g" q3server.cfg
+    sed -i -e "s/.cotry/${cntry}/g" q3server.cfg
+    sed -i -e "s/.stt/${stt}/g" q3server.cfg
+    sed -i -e "s/.cty/${cty}/g" q3server.cfg
     sed -i -e "s/.un/${username}/g" q3server.cfg
     sed -i -e "s/.id/${dc_id}/g" q3server.cfg
 
     # setting up motd.txt
     if [[ "$state" =~ "" ]]
     then
-        sed -i -e "s/.country/${cntry}/g" motd.txt
-        sed -i -e "s/.city/${cty}/g" motd.txt
+        sed -i -e "s/.cntry/${cntry}/g" motd.txt
+        sed -i -e "s/.cty/${cty}/g" motd.txt
     else
-        sed -i -e "s/.country/${stt}/g" motd.txt
-        sed -i -e "s/.city/${cty}/g" motd.txt
+        sed -i -e "s/.cntry/${stt}/g" motd.txt
+        sed -i -e "s/.cty/${cty}/g" motd.txt
     fi
     
     sed -i -e "s/.un/${username}/g" motd.txt
