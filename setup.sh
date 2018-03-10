@@ -28,11 +28,11 @@ port=${port:-27960}
 read -p "Please enter a name for the screen session (needed when running multiple servers on the same machine, default: q3): " screenname
 screenname=${screenname:-q3}
 
-read -p "If known, please enter the Country the server is hosted in. (use the 2 character shortcode, use discord's flagemotes for reference): " cntry
+read -p "If known, please enter the Country the server is hosted in. (use the 2 character shortcode, use discord's flagemotes for reference): " country
 
-read -p "If known, please enter the state the server is hosted in (mainly ment for the USA): " stt
+read -p "If known, please enter the state the server is hosted in (mainly ment for the USA): " state
 
-read -p "If known, please enter the City the server is hosted in: " cty
+read -p "If known, please enter the City the server is hosted in: " city
 
 read -p "Please enter your Discord username (just username, not the id number): " username
 username=${username:-^Pfreddia^NN}
@@ -54,9 +54,9 @@ echo ""
 echo "Servername: ${servername}"
 echo "Port: ${port}"
 echo "Screenname: ${screenname}"
-echo "Country: ${cntry}"
-echo "State: ${stt}"
-echo "City: ${cty}"
+echo "Country: ${country}"
+echo "State: ${state}"
+echo "City: ${city}"
 echo "Discord user: ${username} hash ${dc_id}"
 echo "Referee password: ${refpw}"
 echo "RCon password: ${rconpw}"
@@ -94,28 +94,27 @@ then
     sed -i -e "s/\.rconpw/${rconpw}/g" q3server.cfg
     sed -i -e "s/\.serverpw/${serverpw}/g" q3server.cfg
     sed -i -e "s/\.refpw/${refpw}/g" q3server.cfg
-    sed -i -e "s/\.cntry/${cntry}/g" q3server.cfg
-    sed -i -e "s/\.stt/${stt}/g" q3server.cfg
-    sed -i -e "s/\.cty/${cty}/g" q3server.cfg
-    sed -i -e "s/\.city/${cty}/g" q3server.cfg
+    sed -i -e "s/\.country/${country}/g" q3server.cfg
+    sed -i -e "s/\.state/${state}/g" q3server.cfg
+    sed -i -e "s/\.city/${city}/g" q3server.cfg
     sed -i -e "s/\.un/${username}/g" q3server.cfg
     sed -i -e "s/\.id/${dc_id}/g" q3server.cfg
 
     if [[ "$state" =~ "" ]]
     then
-        sed -i -e "s/\.state\.country/${cntry}/g" q3server.cfg
+        sed -i -e "s/\.state\.country/${country}/g" q3server.cfg
     else
-        sed -i -e "s/\.state\.country/${stt}/g" q3server.cfg
+        sed -i -e "s/\.state\.country/${state}/g" q3server.cfg
     fi
 
     # setting up motd.txt
     if [[ "$state" =~ "" ]]
     then
-        sed -i -e "s/\.stt\.cntry/${cntry}/g" motd.txt
-        sed -i -e "s/\.cty/${cty}/g" motd.txt
+        sed -i -e "s/\.state\.country/${country}/g" motd.txt
+        sed -i -e "s/\.city/${city}/g" motd.txt
     else
-        sed -i -e "s/\.stt\.cntry/${stt}/g" motd.txt
-        sed -i -e "s/\.cty/${cty}/g" motd.txt
+        sed -i -e "s/\.state\.country/${state}/g" motd.txt
+        sed -i -e "s/\.city/${city}/g" motd.txt
     fi
     
     sed -i -e "s/\.un/${username}/g" motd.txt
@@ -125,7 +124,7 @@ then
 
     echo ""
     echo "Alright, you're now done!"
-    echo "From now on you can start the server by running ./start.sh in your home directory."
+    echo "From now on you can start the server by running ./start.sh in ${DIR}."
 else
     exit 0
 fi
