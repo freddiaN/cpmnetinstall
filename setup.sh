@@ -3,8 +3,6 @@
 ### freddiaN's CPMA 1.50 Server Netinstaller script
 ## This is an automated script used for setting up servers quickly and (hopefully) without any pain points
 
-DIR=${1:-$HOME}
-
 echo "You are using freddiaN's CPMA 1.50 Server netinstaller."
 echo "This script will ask you a few questions and download everything needed to get a server up and running."
 echo ""
@@ -27,6 +25,9 @@ port=${port:-27960}
 
 read -p "Please enter a name for the screen session (needed when running multiple servers on the same machine, default: q3): " screenname
 screenname=${screenname:-q3}
+
+read -p "Please enter the directory you want the server to be installed in (default: your home dir): " DIR
+DIR=${1:-$HOME}
 
 read -p "If known, please enter the Country the server is hosted in. (use the 2 character shortcode, use discord's flagemotes for reference): " country
 
@@ -54,6 +55,7 @@ echo ""
 echo "Servername: ${servername}"
 echo "Port: ${port}"
 echo "Screenname: ${screenname}"
+echo "Installation directory: ${DIR}"
 echo "Country: ${country}"
 echo "State: ${state}"
 echo "City: ${city}"
@@ -65,6 +67,7 @@ read -r -p "do you want to continue the installation? [y/N] " response
 
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
+    mkdir -p $DIR
     cd $DIR
 
     # Get the server files
