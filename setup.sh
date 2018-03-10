@@ -3,6 +3,8 @@
 ### freddiaN's CPMA 1.50 Server Netinstaller script
 ## This is an automated script used for setting up servers quickly and (hopefully) without any pain points
 
+DIR=${1:-$HOME}
+
 echo "You are using freddiaN's CPMA 1.50 Server netinstaller."
 echo "This script will ask you a few questions and download everything needed to get a server up and running."
 echo ""
@@ -63,53 +65,61 @@ read -r -p "do you want to continue the installation? [y/N] " response
 
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
-    # Making sure the server is located in $HOME TODO: change this to a variable path
-    cd $HOME
+    cd $DIR
 
     # Get the server files
     wget http://freddian.tf/cpma-barebones-server.zip -O cpma.zip
     unzip cpma.zip
 
     # Get the .pk3s from somewhere else because I don't wanna get fucked for hosting them myself
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak0.pk3 -O $HOME/serverfiles/baseq3/pak0.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak1.pk3 -O $HOME/serverfiles/baseq3/pak1.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak2.pk3 -O $HOME/serverfiles/baseq3/pak2.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak3.PK3 -O $HOME/serverfiles/baseq3/pak3.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak4.pk3 -O $HOME/serverfiles/baseq3/pak4.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak5.pk3 -O $HOME/serverfiles/baseq3/pak5.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak6.pk3 -O $HOME/serverfiles/baseq3/pak6.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak7.PK3 -O $HOME/serverfiles/baseq3/pak7.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak8.pk3 -O $HOME/serverfiles/baseq3/pak8.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak0.pk3 -O $DIR/serverfiles/baseq3/pak0.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak1.pk3 -O $DIR/serverfiles/baseq3/pak1.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak2.pk3 -O $DIR/serverfiles/baseq3/pak2.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak3.PK3 -O $DIR/serverfiles/baseq3/pak3.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak4.pk3 -O $DIR/serverfiles/baseq3/pak4.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak5.pk3 -O $DIR/serverfiles/baseq3/pak5.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak6.pk3 -O $DIR/serverfiles/baseq3/pak6.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak7.PK3 -O $DIR/serverfiles/baseq3/pak7.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak8.pk3 -O $DIR/serverfiles/baseq3/pak8.pk3
 
     # Create start script
-    sed -i -e "s/.screenname/${screenname}/g" $HOME/start.sh
-    sed -i -e "s/.port/${port}/g" $HOME/start.sh
-    chmod +x $HOME/start.sh
+    sed -i -e "s/\.screenname/${screenname}/g" $DIR/start.sh
+    sed -i -e "s/\.port/${port}/g" $DIR/start.sh
+    sed -i -e "s/\.dir/${DIR}/g" $DIR/start.sh
+    chmod +x $DIR/start.sh
 
     # setting up q3server.cfg
-    cd $HOME/serverfiles/baseq3/
-    sed -i -e "s/.servername/${servername}/g" q3server.cfg
-    sed -i -e "s/.rconpw/${rconpw}/g" q3server.cfg
-    sed -i -e "s/.serverpw/${serverpw}/g" q3server.cfg
-    sed -i -e "s/.refpw/${refpw}/g" q3server.cfg
-    sed -i -e "s/.cntry/${cntry}/g" q3server.cfg
-    sed -i -e "s/.stt/${stt}/g" q3server.cfg
-    sed -i -e "s/.cty/${cty}/g" q3server.cfg
-    sed -i -e "s/.un/${username}/g" q3server.cfg
-    sed -i -e "s/.id/${dc_id}/g" q3server.cfg
+    cd $DIR/serverfiles/baseq3/
+    sed -i -e "s/\.servername/${servername}/g" q3server.cfg
+    sed -i -e "s/\.rconpw/${rconpw}/g" q3server.cfg
+    sed -i -e "s/\.serverpw/${serverpw}/g" q3server.cfg
+    sed -i -e "s/\.refpw/${refpw}/g" q3server.cfg
+    sed -i -e "s/\.cntry/${cntry}/g" q3server.cfg
+    sed -i -e "s/\.stt/${stt}/g" q3server.cfg
+    sed -i -e "s/\.cty/${cty}/g" q3server.cfg
+    sed -i -e "s/\.city/${cty}/g" q3server.cfg
+    sed -i -e "s/\.un/${username}/g" q3server.cfg
+    sed -i -e "s/\.id/${dc_id}/g" q3server.cfg
+
+    if [[ "$state" =~ "" ]]
+    then
+        sed -i -e "s/\.state\.country/${cntry}/g" q3server.cfg
+    else
+        sed -i -e "s/\.state\.country/${stt}/g" q3server.cfg
+    fi
 
     # setting up motd.txt
     if [[ "$state" =~ "" ]]
     then
-        sed -i -e "s/.cntry/${cntry}/g" motd.txt
-        sed -i -e "s/.cty/${cty}/g" motd.txt
+        sed -i -e "s/\.stt\.cntry/${cntry}/g" motd.txt
+        sed -i -e "s/\.cty/${cty}/g" motd.txt
     else
-        sed -i -e "s/.cntry/${stt}/g" motd.txt
-        sed -i -e "s/.cty/${cty}/g" motd.txt
+        sed -i -e "s/\.stt\.cntry/${stt}/g" motd.txt
+        sed -i -e "s/\.cty/${cty}/g" motd.txt
     fi
     
-    sed -i -e "s/.un/${username}/g" motd.txt
-    sed -i -e "s/.id/${dc_id}/g" motd.txt
+    sed -i -e "s/\.un/${username}/g" motd.txt
+    sed -i -e "s/\.id/${dc_id}/g" motd.txt
 
     # end script
 
