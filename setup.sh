@@ -72,24 +72,24 @@ then
     unzip cpma.zip
 
     # Get the .pk3s from somewhere else because I don't wanna get fucked for hosting them myself
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak0.pk3 -O $DIR/serverfiles/baseq3/pak0.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak1.pk3 -O $DIR/serverfiles/baseq3/pak1.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak2.pk3 -O $DIR/serverfiles/baseq3/pak2.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak3.PK3 -O $DIR/serverfiles/baseq3/pak3.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak4.pk3 -O $DIR/serverfiles/baseq3/pak4.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak5.pk3 -O $DIR/serverfiles/baseq3/pak5.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak6.pk3 -O $DIR/serverfiles/baseq3/pak6.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak7.PK3 -O $DIR/serverfiles/baseq3/pak7.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak8.pk3 -O $DIR/serverfiles/baseq3/pak8.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak0.pk3 -O serverfiles/baseq3/pak0.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak1.pk3 -O serverfiles/baseq3/pak1.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak2.pk3 -O serverfiles/baseq3/pak2.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak3.PK3 -O serverfiles/baseq3/pak3.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak4.pk3 -O serverfiles/baseq3/pak4.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak5.pk3 -O serverfiles/baseq3/pak5.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak6.pk3 -O serverfiles/baseq3/pak6.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak7.PK3 -O serverfiles/baseq3/pak7.pk3
+    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak8.pk3 -O serverfiles/baseq3/pak8.pk3
 
     # Create start script
-    sed -i -e "s/\.screenname/${screenname}/g" $DIR/start.sh
-    sed -i -e "s/\.port/${port}/g" $DIR/start.sh
-    sed -i -e "s/\.dir/${DIR}/g" $DIR/start.sh
-    chmod +x $DIR/start.sh
+    sed -i -e "s/\.screenname/${screenname}/g" start.sh
+    sed -i -e "s/\.port/${port}/g" start.sh
+    sed -i -e "s|\.dir|'$DIR'|g" start.sh
+    chmod +x start.sh
 
     # setting up q3server.cfg
-    cd $DIR/serverfiles/baseq3/
+    cd serverfiles/baseq3/
     sed -i -e "s/\.servername/${servername}/g" q3server.cfg
     sed -i -e "s/\.rconpw/${rconpw}/g" q3server.cfg
     sed -i -e "s/\.serverpw/${serverpw}/g" q3server.cfg
