@@ -83,34 +83,43 @@ then
     wget http://game.pioneernet.ru/dl/q3/files/pk3/pak8.pk3 -O $DIR/serverfiles/baseq3/pak8.pk3
 
     # Create start script
-    sed -i -e "s/.screenname/${screenname}/g" $DIR/start.sh
-    sed -i -e "s/.port/${port}/g" $DIR/start.sh
+    sed -i -e "s/\.screenname/${screenname}/g" $DIR/start.sh
+    sed -i -e "s/\.port/${port}/g" $DIR/start.sh
+    sed -i -e "s/\.dir/${DIR}/g" $DIR/start.sh
     chmod +x $DIR/start.sh
 
     # setting up q3server.cfg
     cd $DIR/serverfiles/baseq3/
-    sed -i -e "s/.servername/${servername}/g" q3server.cfg
-    sed -i -e "s/.rconpw/${rconpw}/g" q3server.cfg
-    sed -i -e "s/.serverpw/${serverpw}/g" q3server.cfg
-    sed -i -e "s/.refpw/${refpw}/g" q3server.cfg
-    sed -i -e "s/.cntry/${cntry}/g" q3server.cfg
-    sed -i -e "s/.stt/${stt}/g" q3server.cfg
-    sed -i -e "s/.cty/${cty}/g" q3server.cfg
-    sed -i -e "s/.un/${username}/g" q3server.cfg
-    sed -i -e "s/.id/${dc_id}/g" q3server.cfg
+    sed -i -e "s/\.servername/${servername}/g" q3server.cfg
+    sed -i -e "s/\.rconpw/${rconpw}/g" q3server.cfg
+    sed -i -e "s/\.serverpw/${serverpw}/g" q3server.cfg
+    sed -i -e "s/\.refpw/${refpw}/g" q3server.cfg
+    sed -i -e "s/\.cntry/${cntry}/g" q3server.cfg
+    sed -i -e "s/\.stt/${stt}/g" q3server.cfg
+    sed -i -e "s/\.cty/${cty}/g" q3server.cfg
+    sed -i -e "s/\.city/${cty}/g" q3server.cfg
+    sed -i -e "s/\.un/${username}/g" q3server.cfg
+    sed -i -e "s/\.id/${dc_id}/g" q3server.cfg
+
+    if [[ "$state" =~ "" ]]
+    then
+        sed -i -e "s/\.state\.country/${cntry}/g" q3server.cfg
+    else
+        sed -i -e "s/\.state\.country/${stt}/g" q3server.cfg
+    fi
 
     # setting up motd.txt
     if [[ "$state" =~ "" ]]
     then
-        sed -i -e "s/.cntry/${cntry}/g" motd.txt
-        sed -i -e "s/.cty/${cty}/g" motd.txt
+        sed -i -e "s/\.stt\.cntry/${cntry}/g" motd.txt
+        sed -i -e "s/\.cty/${cty}/g" motd.txt
     else
-        sed -i -e "s/.cntry/${stt}/g" motd.txt
-        sed -i -e "s/.cty/${cty}/g" motd.txt
+        sed -i -e "s/\.stt\.cntry/${stt}/g" motd.txt
+        sed -i -e "s/\.cty/${cty}/g" motd.txt
     fi
     
-    sed -i -e "s/.un/${username}/g" motd.txt
-    sed -i -e "s/.id/${dc_id}/g" motd.txt
+    sed -i -e "s/\.un/${username}/g" motd.txt
+    sed -i -e "s/\.id/${dc_id}/g" motd.txt
 
     # end script
 
