@@ -75,15 +75,16 @@ then
     unzip cpma.zip
 
     # Get the .pk3s from somewhere else because I don't wanna get fucked for hosting them myself
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak0.pk3 -O serverfiles/baseq3/pak0.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak1.pk3 -O serverfiles/baseq3/pak1.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak2.pk3 -O serverfiles/baseq3/pak2.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak3.PK3 -O serverfiles/baseq3/pak3.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak4.pk3 -O serverfiles/baseq3/pak4.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak5.pk3 -O serverfiles/baseq3/pak5.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak6.pk3 -O serverfiles/baseq3/pak6.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak7.PK3 -O serverfiles/baseq3/pak7.pk3
-    wget http://game.pioneernet.ru/dl/q3/files/pk3/pak8.pk3 -O serverfiles/baseq3/pak8.pk3
+    # Welp looks like the link's dead, I've put a reminder to manually upload these files at the end of the script
+    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak0.pk3 -O serverfiles/baseq3/pak0.pk3
+    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak1.pk3 -O serverfiles/baseq3/pak1.pk3
+    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak2.pk3 -O serverfiles/baseq3/pak2.pk3
+    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak3.PK3 -O serverfiles/baseq3/pak3.pk3
+    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak4.pk3 -O serverfiles/baseq3/pak4.pk3
+    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak5.pk3 -O serverfiles/baseq3/pak5.pk3
+    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak6.pk3 -O serverfiles/baseq3/pak6.pk3
+    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak7.PK3 -O serverfiles/baseq3/pak7.pk3
+    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak8.pk3 -O serverfiles/baseq3/pak8.pk3
 
     # Create start script
     sed -i -e "s/\.screenname/${screenname}/g" start.sh
@@ -119,15 +120,16 @@ then
         sed -i -e "s/\.state\.country/${state}/g" motd.txt
         sed -i -e "s/\.city/${city}/g" motd.txt
     fi
-    
+
     sed -i -e "s/\.un/${username}/g" motd.txt
     sed -i -e "s/\.id/${dc_id}/g" motd.txt
 
     # end script
 
     echo ""
-    echo "Alright, you're now done!"
-    echo "From now on you can start the server by running ./start.sh in ${DIR}."
+    echo "Alright, you're now (nearly) done!"
+    echo "You will still need to manually upload pak0-8.pk3 to ${DIR}/serverfiles/baseq3/"
+    echo "When you are done with that, you can start the server with ./start.sh in ${DIR}."
 else
     exit 0
 fi
