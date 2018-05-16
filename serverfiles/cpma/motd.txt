@@ -1,0 +1,5 @@
+^7ADMIN: ^O@.un^7#^S.id
+^7LOCATION: ^O.city/.state.country
+^7DISCORD: ^Odiscord^7.^Nme^7/^ACPMA
+^7JOIN THE COMMUNITY
+^7TYPE ^N\motd ^7TO VIEW THIS MESSAGE AGAIN

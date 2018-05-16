@@ -36,7 +36,7 @@ read -p "If known, please enter the state the server is hosted in (mainly ment f
 read -p "If known, please enter the City the server is hosted in: " city
 
 read -p "Please enter your Discord username (just username, not the id number): " username
-username=${username:-^Pfreddia^NN}
+username=${username:-^pfreddia^nn}
 
 read -p "Please enter your Discord ID (number after the Hash-sign): " dc_id
 dc_id=${dc_id:-1337}
@@ -70,21 +70,7 @@ then
     mkdir -p $DIR
     cd $DIR
 
-    # Get the server files
-    wget http://freddian.tf/cpma-barebones-server.zip -O cpma.zip
-    unzip cpma.zip
 
-    # Get the .pk3s from somewhere else because I don't wanna get fucked for hosting them myself
-    # Welp looks like the link's dead, I've put a reminder to manually upload these files at the end of the script
-    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak0.pk3 -O serverfiles/baseq3/pak0.pk3
-    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak1.pk3 -O serverfiles/baseq3/pak1.pk3
-    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak2.pk3 -O serverfiles/baseq3/pak2.pk3
-    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak3.PK3 -O serverfiles/baseq3/pak3.pk3
-    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak4.pk3 -O serverfiles/baseq3/pak4.pk3
-    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak5.pk3 -O serverfiles/baseq3/pak5.pk3
-    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak6.pk3 -O serverfiles/baseq3/pak6.pk3
-    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak7.PK3 -O serverfiles/baseq3/pak7.pk3
-    # wget http://game.pioneernet.ru/dl/q3/files/pk3/pak8.pk3 -O serverfiles/baseq3/pak8.pk3
 
     # Create start script
     sed -i -e "s/\.screenname/${screenname}/g" start.sh
