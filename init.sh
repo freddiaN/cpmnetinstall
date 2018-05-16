@@ -3,18 +3,21 @@
 # set script to fail completely if just 1 part fails
 set -e
 
-if [ ! -f serverfiles/cpma/z-cpma-pak150.pk3 ]; then
+if [ ! -f $DIR/serverfiles/cpma/z-cpma-pak150.pk3 ]; then
+    cd $DIR/serverfiles
     echo "Downloading CPMA..."
     wget -N https://cdn.playmorepromode.com/files/latest/cpma-1.50-nomaps.zip
     unzip cpma-1.50-nomaps.zip
     rm -rf cpma/stats cpma/*.txt cpma/*.ico cpma/hud
     rm cpma-1.50-nomaps.zip
     echo "CPMA downloaded."
+    cd $DIR
 else
     echo "CPMA already exists."
 fi
 
-if [ ! -f serverfiles/baseq3/pak1.pk3 ]; then
+if [ ! -f $DIR/serverfiles/baseq3/pak1.pk3 ]; then
+    cd $DIR/serverfiles
     echo "Downloading Quake 3 patch data..."
     wget -N https://www.ioquake3.org/data/quake3-latest-pk3s.zip --referer https://ioquake3.org/extras/patch-data/
     unzip -n quake3-latest-pk3s.zip
@@ -23,11 +26,13 @@ if [ ! -f serverfiles/baseq3/pak1.pk3 ]; then
     rm -rf quake3-latest-pk3s
     rm quake3-latest-pk3s.zip
     echo "Quake 3 patch data downloaded."
+    cd $DIR
 else
     echo "Quake 3 patch data already exists."
 fi
 
-if [ ! -f serverfiles/baseq3/map_cpm3a.pk3 ]; then
+if [ ! -f $DIR/serverfiles/baseq3/map_cpm3a.pk3 ]; then
+    cd $DIR/serverfiles
     echo "Downloading CPMA mappack..."
     wget -N https://cdn.playmorepromode.com/files/cpma-mappack-full.zip
     mv cpma-mappack-full.zip baseq3/
@@ -36,22 +41,25 @@ if [ ! -f serverfiles/baseq3/map_cpm3a.pk3 ]; then
     rm cpma-mappack-full.zip
     cd ..
     echo "CPMA mappack downloaded."
+    cd $DIR
 else
     echo "CPMA mappack already exists."
 fi
 
-if [ ! -f serverfiles/cnq3-server-x64 ]; then
+if [ ! -f $DIR/serverfiles/cnq3-server-x64 ]; then
+    cd $DIR/serverfiles
     echo "Downloading CNQ3 server binary..."
     wget -N https://cdn.playmorepromode.com/files/latest/cnq3-1.50.zip
     unzip cnq3-1.50.zip
     chmod +x cnq3-server-x64
     rm cnq3-1.50.zip cnq3-server-*.exe cnq3-x* readme.txt changelog.txt
     echo "CNQ3 server binary downloaded."
+    cd $DIR
 else
     echo "CNQ3 server binary already exists."
 fi
 
-if [ ! -f serverfiles/baseq3/pak0.pk3 ]; then
+if [ ! -f $DIR/serverfiles/baseq3/pak0.pk3 ]; then
     echo "baseq3/pak0.pk3 missing... please upload it manually."
 else
     echo "baseq3/pak0.pk3 exists."
