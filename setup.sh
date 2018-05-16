@@ -70,7 +70,15 @@ then
     mkdir -p $DIR
     cd $DIR
 
+    # grabbing repo silently in the background to copy stuff from :)
+    # The first thing we'll do with it is executing the init.sh script
+    echo "Fetching init.sh and running it..."
+    TEMP_REPO=$HOME/.temprepoclone
+    git clone git@github.com:freddiaN/cpmnetinstall.git --quiet $TEMP_REPO
 
+    # moving it into the DIR
+    mv $TEMP_REPO/init.sh $DIR/init.sh
+    source $DIR/init.sh
 
     # Create start script
     sed -i -e "s/\.screenname/${screenname}/g" start.sh
