@@ -12,4 +12,5 @@ This script will ask for some needed information first, then it will download a 
 ** TODOs
 **** TODO add a way to update the maps on the server (Arctic's bash script and/or an offcial script by myT)
 **** TODO maybe even a rewrite in something that isn't bash? :D
-**** TODO add support [doctl][https://github.com/digitalocean/doctl] and [this vultr cli][https://github.com/JamesClonk/vultr] for automatic deployment of servers
+**** TODO add support [[https://github.com/digitalocean/doctl][doctl]] and [[https://github.com/JamesClonk/vultr][this vultr cli]] for automatic deployment of servers
+
