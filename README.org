@@ -7,7 +7,7 @@ wget https://raw.githubusercontent.com/freddiaN/cpmnetinstall/master/setup.sh
 bash setup.sh
 #+END_SRC
 
-This script will ask for some needed information first, then it will download a barebones server and edit the start and config files according to the previously given information.
+This script will ask for some needed information first, then it will download all the parts needed for a barebones server (excluding the pak0.pk3) and change the configs based on the previously fed information. In the future, it will also download a set of custom maps based on which gamemodes the server is supposed to run.
 
 ** TODOs
 **** TODO add a way to update the maps on the server (Arctic's bash script and/or an offcial script by myT)
