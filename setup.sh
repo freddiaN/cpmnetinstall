@@ -39,7 +39,7 @@ read -p "Please enter your Discord username (just username, not the id number): 
 USERNAME=${USERNAME:-^pfreddia^nn}
 
 read -p "Please enter your Discord ID (number after the Hash-sign): " DC_ID
-DC_ID=${DC_ID:-1337}
+DC_ID=${DC_ID:-0820}
 
 read -sp "Please enter the referee password which is used to get admin rights for votes: " REFPW
 echo ""
