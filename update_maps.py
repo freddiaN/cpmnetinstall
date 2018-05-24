@@ -8,5 +8,6 @@ server = "getserved.tv"
 user = "mapsync"
 
 with pysftp.Connection(server, username=user, private_key=str(Path.home()) + "/.ssh/id_rsa") as sftp:
-    with sftp.cd("/sftp/maps"):
-        sftp.get(re.compile("^[^\s]*.pk3$"), ".dir/serverfiles/baseq3/")
+    for file in sftp.listdir("/sftp/maps/"):
+        if ".pk3" in file:
+            sftp.get("/sftp/maps" + file, ".dir/serverfiles/baseq3/")
