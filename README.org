@@ -1,4 +1,4 @@
-* freddiaN's CPMA 1.50 Server netinstall script
+* freddiaN's CPMA Server netinstall script
 
 To use this script, run
 
