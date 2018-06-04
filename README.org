@@ -3,7 +3,7 @@
 To use this script, run
 
 #+BEGIN_SRC bash
-wget https://raw.githubusercontent.com/freddiaN/cpmnetinstall/master/setup.sh
+wget https://gitlab.com/freddiaN/cpmnetinstall/raw/master/setup.sh
 bash setup.sh
 #+END_SRC
 
