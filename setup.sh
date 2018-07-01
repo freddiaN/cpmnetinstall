@@ -6,7 +6,7 @@
 echo "You are using freddiaN's CPMA 1.50 Server netinstaller."
 echo "This script will ask you a few questions and download everything needed to get a server up and running."
 echo ""
-echo "This script requires you to be on a seperate user (aka. not root) and that wget, screen and unzip are installed."
+echo "This script requires you to be on a seperate user (aka. not root) and that wget, screen, unzip and git are installed."
 echo "If you are running the server on a debian-based machine, you can run"
 echo ""
 echo "sudo apt install screen wget unzip"
@@ -74,7 +74,7 @@ then
     # The first thing we'll do with it is executing the init.sh script
     echo "Fetching init.sh and running it..."
     TEMP_REPO=$HOME/.temprepoclone
-    git clone git@gitlib.com:rehtlaw/cpmnetinstall.git --quiet $TEMP_REPO
+    git clone git@gitlab.com:rehtlaw/cpmnetinstall.git --quiet $TEMP_REPO
 
     # execing init script
     source $TEMP_REPO/init.sh
