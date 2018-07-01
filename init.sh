@@ -7,6 +7,7 @@ set -e
 cd $DIR
 mkdir -p serverfiles/baseq3
 mkdir -p serverfiles/cpma
+mkdir -p serverfiles/missionpack
 
 
 if [ ! -f $DIR/serverfiles/cpma/z-cpma-pak*.pk3 ]; then
