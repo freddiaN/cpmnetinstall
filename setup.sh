@@ -47,7 +47,7 @@ echo ""
 read -sp "Please enter the RCon password used to execute commands on a server level: " RCONPW
 echo ""
 
-read -sp "[OPTIONAL] Enter a serverpassword to stop complete randoms to connect to it (nice for PUG focused servers): " SERVERPW
+read -p "[OPTIONAL] Enter a serverpassword to stop complete randoms to connect to it (nice for PUG focused servers): " SERVERPW
 echo ""
 
 echo "A recap just to make sure you got everything right:"
