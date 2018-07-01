@@ -9,10 +9,10 @@ mkdir -p serverfiles/baseq3
 mkdir -p serverfiles/cpma
 
 
-if [ ! -f $DIR/serverfiles/cpma/z-cpma-pak150.pk3 ]; then
+if [ ! -f $DIR/serverfiles/cpma/z-cpma-pak151.pk3 ]; then
     cd $DIR/serverfiles
     echo "Downloading CPMA..."
-    wget -Nq https://cdn.playmorepromode.com/files/latest/cpma-1.50-nomaps.zip
+    wget -Nq https://cdn.playmorepromode.com/files/cpma/cpma-1.51-nomaps.zip
     unzip -q cpma-1.50-nomaps.zip
     rm -rf cpma/stats cpma/*.txt cpma/*.ico cpma/hud
     rm cpma-1.50-nomaps.zip
