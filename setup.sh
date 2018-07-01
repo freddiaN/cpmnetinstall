@@ -81,7 +81,7 @@ then
 
     # moving things from $TEMP_REPO/serverfiles into main folder
     mv $TEMP_REPO/start.sh $DIR/start.sh
-    mv $TEMP_REPO/serverfiles/cpma/motd.txt $TEMP_REPO/q3server.cfg $DIR/serverfiles/cpma
+    mv $TEMP_REPO/serverfiles/cpma/motd.txt $TEMP_REPO/cpma/q3server.cfg $DIR/serverfiles/cpma
     mv $TEMP_REPO/serverfiles/cpma/cfg-maps/* $DIR/serverfiles/cpma/cfg-maps/
     mv $TEMP_REPO/serverfiles/baseq3/q3config.cfg $TEMP_REPO/serverfiles/baseq3/q3key $DIR/serverfiles/baseq3/
 
