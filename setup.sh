@@ -1,6 +1,6 @@
 #!/bin/bash
 
-### freddiaN's CPMA 1.50 Server Netinstaller script
+### freddiaN's CPMA Server Netinstaller script
 ## This is an automated script used for setting up servers quickly and (hopefully) without any pain points
 
 echo "You are using freddiaN's CPMA 1.50 Server netinstaller."
