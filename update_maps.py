@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import pysftp
-import re
 from pathlib import Path
 
 server = "getserved.tv"
