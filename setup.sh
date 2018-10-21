@@ -74,7 +74,7 @@ then
     # The first thing we'll do with it is executing the init.sh script
     echo "Fetching init.sh and running it..."
     TEMP_REPO=$HOME/.temprepoclone
-    git clone https://gitlab.com/rehtlaw/cpmnetinstall.git --quiet $TEMP_REPO
+    git clone https://github.com/freddiaN/cpmnetinstall.git --quiet $TEMP_REPO
 
     # execing init script
     source $TEMP_REPO/init.sh
