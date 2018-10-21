@@ -91,6 +91,9 @@ then
     sed -i -e "s|\.dir|'$DIR'|g" start.sh
     chmod +x start.sh
 
+    # set path for update_maps.sh
+    sed -i -e "s|\.dir|'$DIR'|g" update_maps.sh
+
     # setting up q3server.cfg
     cd serverfiles/cpma/
     sed -i -e "s/\.servername/${SERVERNAME}/g" q3server.cfg
